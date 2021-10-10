@@ -10,6 +10,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.StudyDiary">
         <activity
+            android:name=".Activity.MethodDetail.MethodDetailActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Activity.Splash.SplashActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".Activity.AddMethod.AddMethodActivity"
             android:exported="true" />
         <activity
@@ -18,11 +30,13 @@
         <activity
             android:name=".Activity.MainActivity.MainActivity"
             android:exported="true">
+
+            <!--
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            -->
         </activity>
     </application>
 

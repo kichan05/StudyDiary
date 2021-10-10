@@ -36,5 +36,43 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="@id/guideline_addMethod_line1"
             app:layout_constraintEnd_toEndOf="@id/guideline_addMethod_line2" />
+
+
+        <EditText
+            android:id="@+id/edt_addMethod_inputName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+
+            android:hint="공부법 이름을 입력하세요."
+
+            app:layout_constraintTop_toBottomOf="@+id/spinner_addMethod_choiceSubject"
+            app:layout_constraintStart_toStartOf="@id/guideline_addMethod_line1"
+            app:layout_constraintEnd_toEndOf="@id/guideline_addMethod_line2"
+            />
+
+        <EditText
+            android:id="@+id/edt_addMethod_inputEx"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+
+            android:hint="공부법 설명을 입력하세요."
+
+            app:layout_constraintTop_toBottomOf="@+id/edt_addMethod_inputName"
+            app:layout_constraintStart_toStartOf="@id/guideline_addMethod_line1"
+            app:layout_constraintEnd_toEndOf="@id/guideline_addMethod_line2"
+            />
+
+        <Button
+            android:id="@+id/btn_addMethod_addMethod"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+
+            android:text="완료"
+            android:textSize="24sp"
+
+            app:layout_constraintTop_toBottomOf="@+id/edt_addMethod_inputEx"
+            app:layout_constraintStart_toStartOf="@id/guideline_addMethod_line1"
+            app:layout_constraintEnd_toEndOf="@id/guideline_addMethod_line2"
+            />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

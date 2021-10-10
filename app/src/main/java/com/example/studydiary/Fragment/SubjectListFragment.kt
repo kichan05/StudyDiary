@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter
 import androidx.databinding.DataBindingUtil
 import com.example.studydiary.Activity.AddMethod.AddMethodActivity
 import com.example.studydiary.Activity.AddSubject.AddSubjectActivity
+import com.example.studydiary.Activity.Splash.subjectDB
 import com.example.studydiary.DB.Subject.SubjectDatabase
 import com.example.studydiary.R
 import com.example.studydiary.databinding.FragmentSubjectListBinding
@@ -21,7 +22,6 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class SubjectListFragment : Fragment() {
-    lateinit var subjectDb : SubjectDatabase
     lateinit var binding : FragmentSubjectListBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,7 +29,6 @@ class SubjectListFragment : Fragment() {
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_subject_list, container, false)
         val root = binding.root
-        subjectDb = SubjectDatabase.getInstance(requireContext())
 
 
         binding.floatingBtnSubjectListAddMethod.setOnClickListener{
@@ -38,8 +37,8 @@ class SubjectListFragment : Fragment() {
         }
 
         CoroutineScope(Dispatchers.IO).launch{
-            val subjectList = subjectDb.subjectDao().getAll().toMutableList()
-            Log.d("subjectList", subjectList.toString())
+            val subjectList = subjectDB.subjectDao().getAll().toMutableList()
+//            Log.d("subjectList", subjectList.toString())
             withContext(Dispatchers.Main){
                 binding.recyclerSubjectListSubjectList.adapter = SubjectListAdapter(subjectList)
             }
