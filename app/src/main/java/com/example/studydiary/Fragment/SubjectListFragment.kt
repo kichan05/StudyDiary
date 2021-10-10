@@ -23,8 +23,10 @@ class SubjectListFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_subject_list, container, false)
         val root = binding.root
 
-
-
+        binding.floatingBtnSubjectListAddMethod.setOnClickListener{
+            val intent = Intent(requireContext(), AddMethodActivity::class.java)
+            startActivity(intent)
+        }
 
         return root
     }

@@ -14,6 +14,8 @@ class AddSubjectActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_add_subject)
 
-
+        binding.btnAddSubjectAddBtn.setOnClickListener {
+            Toast.makeText(this, "과목을 추가하였습니다.", Toast.LENGTH_LONG).show()
+        }
     }
 }
