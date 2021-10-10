@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Study Diary</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="subjects">
+        <item>과목을 추가해주세요.</item>
+        <item>국어</item>
+        <item>수학</item>
+        <item>영어</item>
+    </string-array>
 </resources>

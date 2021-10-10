@@ -10,35 +10,32 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".Activity.MainActivity.MainActivity">
+        tools:context=".Activity.AddSubject.AddSubjectActivity">
 
-
-        <fragment
-            android:id="@+id/fragmentContainerView"
-            android:name="androidx.navigation.fragment.NavHostFragment"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:defaultNavHost="true"
-            app:navGraph="@navigation/main"
-
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/navBar_main"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            />
-
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/navBar_main"
+        <EditText
+            android:id="@+id/edt_addSubject_inputSubject"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
 
-            app:menu="@menu/bottom_menu"
+            android:hint="과목을 입력하세요."
+            android:textSize="20sp"
 
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <Button
+            android:id="@+id/btn_addSubject_addBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+
+            android:text="추가"
+            android:textSize="20sp"
+
+            app:layout_constraintTop_toBottomOf="@id/edt_addSubject_inputSubject"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             />
-
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

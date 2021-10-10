@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/mainFragment"
+        android:title="Home"
+        android:icon="@drawable/ic_baseline_calendar"/>
+    <item
+        android:id="@+id/writeFragment"
+        android:title="Write"
+        android:icon="@drawable/ic_pencil"/>
+    <item
+        android:id="@+id/subjectListFragment"
+        android:title="List"
+        android:icon="@drawable/ic_list"/>
+</menu>
