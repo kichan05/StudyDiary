@@ -16,4 +16,7 @@ interface SubjectDao {
 
     @Delete
     fun delete(subject: Subject)
+
+    @Query("DELETE FROM subject")
+    fun clearAll()
 }

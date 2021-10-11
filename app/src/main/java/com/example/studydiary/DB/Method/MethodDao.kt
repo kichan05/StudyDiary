@@ -8,7 +8,7 @@ interface MethodDao {
     @Query("SELECT * FROM study_method")
     fun getAll() : Array<Method>
 
-    @Query("SELECT * FROM study_method WHERE subject == :subject")
+    @Query("SELECT * FROM study_method WHERE subject = :subject")
     fun getSubject(subject : String) : Array<Method>
 
     @Insert

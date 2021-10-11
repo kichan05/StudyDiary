@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.studydiary.Model.Subject
 
-@Database(entities = [Subject::class], version = 1)
+@Database(entities = [Subject::class], version = 2)
 abstract class SubjectDatabase : RoomDatabase() {
     abstract fun subjectDao() : SubjectDao
 

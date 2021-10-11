@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.studydiary.Activity.Splash.methodDB
+import com.example.studydiary.Model.Method
 import com.example.studydiary.Model.Subject
 import com.example.studydiary.R
 import kotlinx.coroutines.CoroutineScope
@@ -29,11 +30,13 @@ class SubjectListAdapter(val items : MutableList<Subject>) : RecyclerView.Adapte
         holder.subject.text = items[position].subject_name
 
         CoroutineScope(Dispatchers.IO).launch {
-//            val methodList = methodDB.methodDao().getSubject(items[position].subject_name).toMutableList()
-            Log.d("methodList", items[position].subject_namem)
-//            withContext(Dispatchers.Main){
-//                val methodListAdapter = MethodListAdapter(methodList)
-//                holder.methodRecycler.adapter = methodListAdapter
+            val methodList = methodDB.methodDao().getSubject(items[position].subject_name).toMutableList()
+            Log.d("methodList", methodList.toString())
+//            if(methodList.size > 0){
+            withContext(Dispatchers.Main){
+                val methodListAdapter = MethodListAdapter(methodList)
+                holder.methodRecycler.adapter = methodListAdapter
+            }
 //            }
         }
     }

@@ -27,6 +27,7 @@
 
         tools:listitem="@layout/method_list_item"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:orientation="vertical"
 
         app:layout_constraintTop_toBottomOf="@id/txt_subjectListItem_subject"
         app:layout_constraintStart_toStartOf="parent"

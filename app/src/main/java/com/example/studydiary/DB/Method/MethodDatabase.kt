@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.studydiary.Model.Method
 
-@Database(entities = [Method::class], version = 1)
+@Database(entities = [Method::class], version = 2)
 abstract class MethodDatabase : RoomDatabase() {
     abstract fun methodDao() : MethodDao
 
