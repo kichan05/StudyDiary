@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.StudyDiary">
         <activity
+            android:name=".Activity.Write.WriteActivity"
+            android:exported="true" />
+        <activity
             android:name=".Activity.MethodDetail.MethodDetailActivity"
             android:exported="true" />
         <activity

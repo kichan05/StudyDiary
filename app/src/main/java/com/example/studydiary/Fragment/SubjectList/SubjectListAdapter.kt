@@ -1,4 +1,4 @@
-package com.example.studydiary.Fragment
+package com.example.studydiary.Fragment.SubjectList
 
 import android.util.Log
 import android.view.LayoutInflater
@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.studydiary.Activity.Splash.methodDB
-import com.example.studydiary.Model.Method
 import com.example.studydiary.Model.Subject
 import com.example.studydiary.R
 import kotlinx.coroutines.CoroutineScope

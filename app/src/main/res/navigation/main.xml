@@ -7,17 +7,17 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.example.studydiary.Fragment.MainFragment"
+        android:name="com.example.studydiary.Fragment.Main.MainFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_main" />
     <fragment
         android:id="@+id/subjectListFragment"
-        android:name="com.example.studydiary.Fragment.SubjectListFragment"
+        android:name="com.example.studydiary.Fragment.SubjectList.SubjectListFragment"
         android:label="fragment_subject_list"
         tools:layout="@layout/fragment_subject_list" />
     <fragment
         android:id="@+id/writeFragment"
-        android:name="com.example.studydiary.Fragment.WriteFragment"
+        android:name="com.example.studydiary.Fragment.Write.WriteFragment"
         android:label="fragment_write"
         tools:layout="@layout/fragment_write" />
 </navigation>

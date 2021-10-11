@@ -1,4 +1,4 @@
-package com.example.studydiary.Fragment
+package com.example.studydiary.Fragment.Main
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

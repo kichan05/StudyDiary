@@ -1,4 +1,4 @@
-package com.example.studydiary.Fragment
+package com.example.studydiary.Fragment.SubjectList
 
 import android.content.Intent
 import android.view.LayoutInflater
@@ -15,7 +15,7 @@ class MethodListAdapter(private val items : MutableList<Method>) : RecyclerView.
         val method = view.findViewById<TextView>(R.id.txt_methodList_method)
 
         companion object{
-            fun from(parent: ViewGroup) : Holder{
+            fun from(parent: ViewGroup) : Holder {
                 return Holder(LayoutInflater.from(parent.context)
                     .inflate(R.layout.method_list_item, parent, false))
             }
