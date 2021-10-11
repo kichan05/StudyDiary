@@ -23,6 +23,11 @@ class AddSubjectActivity : AppCompatActivity() {
         binding.btnAddSubjectAddBtn.setOnClickListener {
             val inputSubject = binding.edtAddSubjectInputSubject.text.toString()
 
+            if(inputSubject.isEmpty()){
+                binding.edtAddSubjectInputSubject.error = "과목을 입력해주세요."
+                return@setOnClickListener
+            }
+
             CoroutineScope(Dispatchers.IO).launch {
                 subjectDB.subjectDao().insert(
                     Subject(subject_name = inputSubject)

@@ -44,11 +44,11 @@
             />
 
         <EditText
-            android:id="@+id/btn_writeActivity_write"
+            android:id="@+id/edt_writeActivity_content"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
 
-            android:lines="25"
+            android:lines="10"
             android:hint="일기를 작성해주세요."
 
             app:layout_constraintTop_toBottomOf="@+id/txt_writeActivity_diary"
@@ -65,7 +65,7 @@
 
             android:layout_marginEnd="8dp"
 
-            app:layout_constraintTop_toBottomOf="@+id/btn_writeActivity_write"
+            app:layout_constraintTop_toBottomOf="@+id/edt_writeActivity_content"
             app:layout_constraintStart_toStartOf="@id/guideline_writeActivity_line1"
             app:layout_constraintEnd_toStartOf="@+id/btn_writeActivity_submit"
             />
@@ -80,7 +80,7 @@
 
             android:layout_marginStart="8dp"
 
-            app:layout_constraintTop_toBottomOf="@+id/btn_writeActivity_write"
+            app:layout_constraintTop_toBottomOf="@+id/edt_writeActivity_content"
             app:layout_constraintStart_toEndOf="@+id/btn_writeActivity_back"
             app:layout_constraintEnd_toEndOf="@id/guideline_writeActivity_line2"
             />

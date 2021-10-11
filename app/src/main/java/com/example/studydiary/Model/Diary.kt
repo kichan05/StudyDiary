@@ -3,6 +3,7 @@ package com.example.studydiary.Model
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.io.Serializable
 import java.time.LocalDate
 import javax.security.auth.Subject
 
@@ -15,12 +16,14 @@ data class Diary(
     val focus : Int,
     @ColumnInfo(name = "ability")
     val ability : Int,
+
     @ColumnInfo(name = "subject")
     val subject: String,
     @ColumnInfo(name = "method")
     val method : String,
+
     @ColumnInfo(name = "content")
-    val content : String,
+    var content : String = "",
 
 //    @ColumnInfo(name = "date")
 //    val date : LocalDate = LocalDate.now(),
@@ -31,4 +34,4 @@ data class Diary(
     val month : Int = LocalDate.now().monthValue,
     @ColumnInfo(name = "day")
     val day : Int = LocalDate.now().dayOfMonth,
-)
+) : Serializable
