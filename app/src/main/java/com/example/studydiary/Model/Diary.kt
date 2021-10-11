@@ -16,12 +16,19 @@ data class Diary(
     @ColumnInfo(name = "ability")
     val ability : Int,
     @ColumnInfo(name = "subject")
-    val subject: Subject,
+    val subject: String,
     @ColumnInfo(name = "method")
     val method : String,
     @ColumnInfo(name = "content")
     val content : String,
 
-    @ColumnInfo(name = "date")
-    val date : LocalDate = LocalDate.now(),
+//    @ColumnInfo(name = "date")
+//    val date : LocalDate = LocalDate.now(),
+
+    @ColumnInfo(name = "year")
+    val year : Int = LocalDate.now().year,
+    @ColumnInfo(name = "month")
+    val month : Int = LocalDate.now().monthValue,
+    @ColumnInfo(name = "day")
+    val day : Int = LocalDate.now().dayOfMonth,
 )
