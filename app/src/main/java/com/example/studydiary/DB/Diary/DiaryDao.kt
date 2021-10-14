@@ -16,4 +16,7 @@ interface DiaryDao {
 
     @Delete
     fun delete(diary: Diary)
+
+    @Query("SELECT * FROM diary WHERE year = :year and month = :month + 1 and day = :day")
+    fun getDay(year : Int, month : Int, day : Int) : Array<Diary>
 }

@@ -20,6 +20,7 @@ class AddSubjectActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_add_subject)
 
+
         binding.btnAddSubjectAddBtn.setOnClickListener {
             val inputSubject = binding.edtAddSubjectInputSubject.text.toString()
 

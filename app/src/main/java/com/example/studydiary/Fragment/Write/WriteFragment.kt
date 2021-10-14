@@ -35,6 +35,10 @@ class WriteFragment : Fragment() {
     lateinit var subjectList : MutableList<Subject>
     lateinit var methodList : MutableList<Method>
 
+    var year = 0
+    var month = 0
+    var day = 0
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -49,6 +53,10 @@ class WriteFragment : Fragment() {
 
 
             btnWriteNext.setOnClickListener {
+//                year = edtYear.text.toString().toInt()
+//                month = edtMonth.text.toString().toInt()
+//                day = edtDay.text.toString().toInt()
+
                 if(!inputEmptyCheck()) {
                     return@setOnClickListener
                 }
@@ -59,17 +67,24 @@ class WriteFragment : Fragment() {
                     ability = abilityScore,
                     subject = subject,
                     method = method,
+
+//                    year = year,
+//                    month = month,
+//                    day = day
                 ))
                 root.context.startActivity(intent)
             }
         }
+
 
         CoroutineScope(Dispatchers.IO).launch{
             subjectList = subjectDB.subjectDao().getAll().toMutableList()
             subjectList.add(0, Subject(subject_name = "과목을 선택해주세요."))
             subjectList.add(Subject(subject_name = "과목 추가하기"))
 
-            val choiceSubjectAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, subjectList)
+            val choiceSubjectAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, subjectList.map {
+                it.subject_name
+            })
             withContext(Dispatchers.Main){
                 binding.spinnerWriteChoiceSubject.adapter = choiceSubjectAdapter
             }
@@ -112,7 +127,9 @@ class WriteFragment : Fragment() {
                     methodList = methodDB.methodDao().getSubject(subject).toMutableList()
                     methodList.add(0, Method(name = "공부법을 선택해주세요.", subject = subject, explanation = ""))
                     withContext(Dispatchers.Main){
-                        binding.spinnerWriteChoiceMethod.adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, methodList)
+                        binding.spinnerWriteChoiceMethod.adapter = ArrayAdapter(
+                            requireContext(), android.R.layout.simple_spinner_dropdown_item, methodList.map{ it.name }
+                        )
                     }
                 }
             }
@@ -140,6 +157,11 @@ class WriteFragment : Fragment() {
             Toast.makeText(requireContext(), "공부법을 선택해주세요.", Toast.LENGTH_LONG).show()
             return false
         }
+
+//        if(year == 0 || month == 0 || day == 0){
+//            return false
+//        }
+
 
         return true
     }
