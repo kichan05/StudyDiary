@@ -10,7 +10,10 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".Activity.AddMethod.AddMethodActivity">
+        tools:context=".Activity.AddMethod.AddMethodActivity"
+
+        android:background="@color/bombay"
+        >
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline_addMethod_line1"
@@ -38,16 +41,50 @@
             app:layout_constraintEnd_toEndOf="@id/guideline_addMethod_line2" />
 
 
+        <TextView
+            android:id="@+id/txt_addMethod_inputNameTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="공부법 이름"
+            android:textSize="24dp"
+            android:fontFamily="@font/gowun_dodum_regular"
+
+            app:layout_constraintTop_toBottomOf="@id/spinner_addMethod_choiceSubject"
+            app:layout_constraintStart_toStartOf="@id/guideline_addMethod_line1"
+            />
+
         <EditText
             android:id="@+id/edt_addMethod_inputName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
 
             android:hint="공부법 이름을 입력하세요."
+            android:fontFamily="@font/gowun_dodum_regular"
 
-            app:layout_constraintTop_toBottomOf="@+id/spinner_addMethod_choiceSubject"
+            android:background="@drawable/input_shape"
+
+            android:paddingVertical="10dp"
+            android:layout_marginTop="10dp"
+
+            app:layout_constraintTop_toBottomOf="@+id/txt_addMethod_inputNameTitle"
             app:layout_constraintStart_toStartOf="@id/guideline_addMethod_line1"
             app:layout_constraintEnd_toEndOf="@id/guideline_addMethod_line2"
+            />
+
+        <TextView
+            android:id="@+id/txt_addMethod_inputExTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="공부법 설명"
+            android:textSize="24dp"
+            android:fontFamily="@font/gowun_dodum_regular"
+
+            android:layout_marginTop="25dp"
+
+            app:layout_constraintTop_toBottomOf="@+id/edt_addMethod_inputName"
+            app:layout_constraintStart_toStartOf="@id/guideline_addMethod_line1"
             />
 
         <EditText
@@ -56,8 +93,15 @@
             android:layout_height="wrap_content"
 
             android:hint="공부법 설명을 입력하세요."
+            android:fontFamily="@font/gowun_dodum_regular"
 
-            app:layout_constraintTop_toBottomOf="@+id/edt_addMethod_inputName"
+            android:paddingVertical="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/input_shape"
+
+            android:lines="10"
+
+            app:layout_constraintTop_toBottomOf="@+id/txt_addMethod_inputExTitle"
             app:layout_constraintStart_toStartOf="@id/guideline_addMethod_line1"
             app:layout_constraintEnd_toEndOf="@id/guideline_addMethod_line2"
             />
@@ -67,10 +111,16 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
 
-            android:text="완료"
+            android:text="추가"
             android:textSize="24sp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/gowun_dodum_regular"
 
-            app:layout_constraintTop_toBottomOf="@+id/edt_addMethod_inputEx"
+            android:background="@drawable/btn"
+
+            android:layout_marginBottom="20dp"
+
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@id/guideline_addMethod_line1"
             app:layout_constraintEnd_toEndOf="@id/guideline_addMethod_line2"
             />

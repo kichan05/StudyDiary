@@ -10,7 +10,9 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".Activity.Write.WriteActivity">
+        tools:context=".Activity.Write.WriteActivity"
+        android:background="@color/bombay"
+        >
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline_writeActivity_line1"
@@ -38,6 +40,9 @@
 
             android:text="구체적으로 어땠나요?"
             android:textSize="24sp"
+            android:fontFamily="@font/gowun_dodum_regular"
+
+            android:layout_marginTop="54dp"
 
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="@id/guideline_writeActivity_line1"
@@ -46,12 +51,16 @@
         <EditText
             android:id="@+id/edt_writeActivity_content"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
 
-            android:lines="10"
             android:hint="일기를 작성해주세요."
 
+            android:layout_marginVertical="20dp"
+
+            android:background="@drawable/input_shape"
+
             app:layout_constraintTop_toBottomOf="@+id/txt_writeActivity_diary"
+            app:layout_constraintBottom_toTopOf="@id/btn_writeActivity_back"
             app:layout_constraintStart_toStartOf="@id/guideline_writeActivity_line1"
             app:layout_constraintEnd_toEndOf="@id/guideline_writeActivity_line2"
             />
@@ -62,10 +71,14 @@
             android:layout_height="wrap_content"
 
             android:text="이전"
+            android:textColor="@color/white"
+
+            android:background="@drawable/btn"
 
             android:layout_marginEnd="8dp"
+            android:layout_marginBottom="31dp"
 
-            app:layout_constraintTop_toBottomOf="@+id/edt_writeActivity_content"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@id/guideline_writeActivity_line1"
             app:layout_constraintEnd_toStartOf="@+id/btn_writeActivity_submit"
             />
@@ -77,10 +90,14 @@
             android:layout_height="wrap_content"
 
             android:text="완료"
+            android:textColor="@color/white"
+
+            android:background="@drawable/btn"
 
             android:layout_marginStart="8dp"
+            android:layout_marginBottom="31dp"
 
-            app:layout_constraintTop_toBottomOf="@+id/edt_writeActivity_content"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/btn_writeActivity_back"
             app:layout_constraintEnd_toEndOf="@id/guideline_writeActivity_line2"
             />
