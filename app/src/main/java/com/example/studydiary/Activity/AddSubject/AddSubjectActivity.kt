@@ -4,8 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import com.example.studydiary.Activity.Splash.subjectDB
-import com.example.studydiary.DB.Method.MethodDatabase
-import com.example.studydiary.DB.Subject.SubjectDatabase
 import com.example.studydiary.Model.Subject
 import com.example.studydiary.R
 import com.example.studydiary.databinding.ActivityAddSubjectBinding

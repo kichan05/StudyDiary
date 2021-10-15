@@ -38,7 +38,7 @@ class AddMethodActivity : AppCompatActivity() {
                 subjectList = subjectDB.subjectDao().getAll().toMutableList()
                 subjectList.add(0, Subject(subject_name = "과목을 선택해주세요."))
                 subjectList.add(Subject(subject_name = "과목 추가하기"))
-                val choiceSubjectAdapter = ArrayAdapter(this@AddMethodActivity, android.R.layout.simple_spinner_dropdown_item, subjectList)
+                val choiceSubjectAdapter = ArrayAdapter(this@AddMethodActivity, android.R.layout.simple_spinner_dropdown_item, subjectList.map{it.subject_name})
                 spinnerAddMethodChoiceSubject.adapter = choiceSubjectAdapter
             }
             spinnerAddMethodChoiceSubject.onItemSelectedListener = this@AddMethodActivity.choiceSubjectChanged

@@ -1,4 +1,4 @@
-package com.example.studydiary.DB.Method
+package com.example.studydiary.Model.DB.Method
 
 import androidx.room.*
 import com.example.studydiary.Model.Method

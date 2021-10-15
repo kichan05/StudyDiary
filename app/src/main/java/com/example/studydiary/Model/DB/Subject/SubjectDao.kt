@@ -1,4 +1,4 @@
-package com.example.studydiary.DB.Subject
+package com.example.studydiary.Model.DB.Subject
 
 import androidx.room.*
 import com.example.studydiary.Model.Subject

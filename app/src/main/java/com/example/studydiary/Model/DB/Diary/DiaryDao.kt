@@ -1,4 +1,4 @@
-package com.example.studydiary.DB.Diary
+package com.example.studydiary.Model.DB.Diary
 
 import androidx.room.*
 import com.example.studydiary.Model.Diary
@@ -17,6 +17,6 @@ interface DiaryDao {
     @Delete
     fun delete(diary: Diary)
 
-    @Query("SELECT * FROM diary WHERE year = :year and month = :month + 1 and day = :day")
+    @Query("SELECT * FROM diary WHERE year = :year and month = :month and day = :day")
     fun getDay(year : Int, month : Int, day : Int) : Array<Diary>
 }

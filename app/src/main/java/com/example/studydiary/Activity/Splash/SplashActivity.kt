@@ -4,9 +4,9 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.studydiary.Activity.MainActivity.MainActivity
-import com.example.studydiary.DB.Diary.DiaryDatabase
-import com.example.studydiary.DB.Method.MethodDatabase
-import com.example.studydiary.DB.Subject.SubjectDatabase
+import com.example.studydiary.Model.DB.Diary.DiaryDatabase
+import com.example.studydiary.Model.DB.Method.MethodDatabase
+import com.example.studydiary.Model.DB.Subject.SubjectDatabase
 import com.example.studydiary.R
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
