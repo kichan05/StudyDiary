@@ -3,10 +3,12 @@ package com.example.studydiary.Activity.AddMethod
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.databinding.DataBindingUtil
 import com.example.studydiary.Activity.AddSubject.AddSubjectActivity
 import com.example.studydiary.Activity.Splash.methodDB
@@ -26,6 +28,8 @@ class AddMethodActivity : AppCompatActivity() {
     lateinit var methodName : String
     lateinit var methodEx : String
 
+    lateinit var choiceSubjectAdapter : ArrayAdapter<String>
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,7 +42,8 @@ class AddMethodActivity : AppCompatActivity() {
                 subjectList = subjectDB.subjectDao().getAll().toMutableList()
                 subjectList.add(0, Subject(subject_name = "과목을 선택해주세요."))
                 subjectList.add(Subject(subject_name = "과목 추가하기"))
-                val choiceSubjectAdapter = ArrayAdapter(this@AddMethodActivity, android.R.layout.simple_spinner_dropdown_item, subjectList.map{it.subject_name})
+
+                choiceSubjectAdapter = ArrayAdapter(this@AddMethodActivity, android.R.layout.simple_spinner_dropdown_item, subjectList.map{it.subject_name})
                 spinnerAddMethodChoiceSubject.adapter = choiceSubjectAdapter
             }
             spinnerAddMethodChoiceSubject.onItemSelectedListener = this@AddMethodActivity.choiceSubjectChanged
@@ -82,11 +87,21 @@ class AddMethodActivity : AppCompatActivity() {
         override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
             if(p2 == subjectList.size - 1){
                 val intent = Intent(this@AddMethodActivity, AddSubjectActivity::class.java)
-                startActivity(intent)
+                addSubjectCallback.launch(intent)
             }   else{
                 subject = subjectList[p2].subject_name
             }
         }
         override fun onNothingSelected(p0: AdapterView<*>?) {}
+    }
+
+    val addSubjectCallback = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
+        if(it.resultCode == RESULT_OK){
+            val addSubject = it.data!!.getSerializableExtra("subject") as Subject
+            Log.d("subject", addSubject.toString())
+            subjectList.add(subjectList.size - 1, addSubject)
+            choiceSubjectAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, subjectList.map { it.subject_name })
+            binding.spinnerAddMethodChoiceSubject.adapter = choiceSubjectAdapter
+        }
     }
 }

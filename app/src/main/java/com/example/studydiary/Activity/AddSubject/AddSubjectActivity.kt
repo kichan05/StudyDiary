@@ -1,5 +1,6 @@
 package com.example.studydiary.Activity.AddSubject
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
@@ -27,11 +28,13 @@ class AddSubjectActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
+            val subject = Subject(subject_name = inputSubject)
             CoroutineScope(Dispatchers.IO).launch {
                 subjectDB.subjectDao().insert(
-                    Subject(subject_name = inputSubject)
+                    subject
                 )
 
+                setResult(RESULT_OK, Intent().putExtra("subject", subject))
                 finish()
             }
         }

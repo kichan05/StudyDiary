@@ -1,8 +1,10 @@
 package com.example.studydiary.Fragment.Write
 
+import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.os.Bundle
 import android.text.style.LineHeightSpan
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +13,8 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.SeekBar
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContract
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.databinding.DataBindingUtil
 import com.example.studydiary.Activity.AddSubject.AddSubjectActivity
 import com.example.studydiary.Activity.Splash.methodDB
@@ -35,9 +39,8 @@ class WriteFragment : Fragment() {
     lateinit var subjectList : MutableList<Subject>
     lateinit var methodList : MutableList<Method>
 
-    var year = 0
-    var month = 0
-    var day = 0
+    lateinit var choiceSubjectAdapter : ArrayAdapter<String>
+    lateinit var choiceMethodAdapter : ArrayAdapter<String>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -82,7 +85,7 @@ class WriteFragment : Fragment() {
             subjectList.add(0, Subject(subject_name = "과목을 선택해주세요."))
             subjectList.add(Subject(subject_name = "과목 추가하기"))
 
-            val choiceSubjectAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, subjectList.map {
+            choiceSubjectAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, subjectList.map {
                 it.subject_name
             })
             withContext(Dispatchers.Main){
@@ -120,16 +123,17 @@ class WriteFragment : Fragment() {
         override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
             if (p2 == subjectList.size - 1){
                 val intent = Intent(requireContext(), AddSubjectActivity::class.java)
-                startActivity(intent)
+                addSubjectCallback.launch(intent)
             }   else{
                 subject = subjectList[p2].subject_name
                 CoroutineScope(Dispatchers.IO).launch {
                     methodList = methodDB.methodDao().getSubject(subject).toMutableList()
                     methodList.add(0, Method(name = "공부법을 선택해주세요.", subject = subject, explanation = ""))
                     withContext(Dispatchers.Main){
-                        binding.spinnerWriteChoiceMethod.adapter = ArrayAdapter(
+                        choiceMethodAdapter = ArrayAdapter(
                             requireContext(), android.R.layout.simple_spinner_dropdown_item, methodList.map{ it.name }
                         )
+                        binding.spinnerWriteChoiceMethod.adapter = choiceMethodAdapter
                     }
                 }
             }
@@ -157,12 +161,16 @@ class WriteFragment : Fragment() {
             Toast.makeText(requireContext(), "공부법을 선택해주세요.", Toast.LENGTH_LONG).show()
             return false
         }
-
-//        if(year == 0 || month == 0 || day == 0){
-//            return false
-//        }
-
-
         return true
+    }
+
+    val addSubjectCallback = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
+        if(it.resultCode == RESULT_OK){
+            val addSubject = it.data!!.getSerializableExtra("subject") as Subject
+            Log.d("subject", addSubject.toString())
+            subjectList.add(subjectList.size - 1, addSubject)
+            choiceSubjectAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, subjectList.map { it.subject_name })
+            binding.spinnerWriteChoiceSubject.adapter = choiceSubjectAdapter
+        }
     }
 }
