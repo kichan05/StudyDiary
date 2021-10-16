@@ -119,6 +119,31 @@ class WriteFragment : Fragment() {
         }
     }
 
+
+
+    fun inputEmptyCheck(): Boolean {
+        if(subject.isEmpty()){
+            Toast.makeText(requireContext(), "과목을 선택해주세요.", Toast.LENGTH_LONG).show()
+            return false
+        }
+        if(method.isEmpty()){
+            Toast.makeText(requireContext(), "공부법을 선택해주세요.", Toast.LENGTH_LONG).show()
+            return false
+        }
+        return true
+    }
+
+
+
+    val addSubjectCallback = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
+        if(it.resultCode == RESULT_OK){
+            val addSubject = it.data!!.getSerializableExtra("subject") as Subject
+            subjectList.add(subjectList.size - 1, addSubject)
+            choiceSubjectAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, subjectList.map { it.subject_name })
+            binding.spinnerWriteChoiceSubject.adapter = choiceSubjectAdapter
+        }
+    }
+
     val choiceSubjectChanged = object : AdapterView.OnItemSelectedListener{
         override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
             if (p2 == subjectList.size - 1){
@@ -142,6 +167,7 @@ class WriteFragment : Fragment() {
         override fun onNothingSelected(p0: AdapterView<*>?) {}
     }
 
+
     val choiceMethodChanged = object : AdapterView.OnItemSelectedListener{
         override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
             if(p2 != 0){
@@ -152,25 +178,5 @@ class WriteFragment : Fragment() {
         override fun onNothingSelected(p0: AdapterView<*>?) {}
     }
 
-    fun inputEmptyCheck(): Boolean {
-        if(subject.isEmpty()){
-            Toast.makeText(requireContext(), "과목을 선택해주세요.", Toast.LENGTH_LONG).show()
-            return false
-        }
-        if(method.isEmpty()){
-            Toast.makeText(requireContext(), "공부법을 선택해주세요.", Toast.LENGTH_LONG).show()
-            return false
-        }
-        return true
-    }
 
-    val addSubjectCallback = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
-        if(it.resultCode == RESULT_OK){
-            val addSubject = it.data!!.getSerializableExtra("subject") as Subject
-            Log.d("subject", addSubject.toString())
-            subjectList.add(subjectList.size - 1, addSubject)
-            choiceSubjectAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, subjectList.map { it.subject_name })
-            binding.spinnerWriteChoiceSubject.adapter = choiceSubjectAdapter
-        }
-    }
 }

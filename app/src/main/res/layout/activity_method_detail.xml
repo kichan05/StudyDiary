@@ -53,7 +53,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
-                android:text="OOO공부법"
+                android:text="계산기 사용해서 문제풀기"
                 android:textSize="28sp"
                 android:textColor="@color/white"
                 android:fontFamily="@font/gowun_dodum_regular"
